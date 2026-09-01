@@ -17,7 +17,7 @@ export const site = {
   taglineShort: '360º visual storytelling',
   // TODO: sustituye por el dominio definitivo cuando lo conectes.
   url: 'https://www.haizeastudio.com',
-  email: 'hola@haizeastudio.com', // TODO: sustituye por tu email real de contacto
+  email: 'aloha@haizeastudio.com',
   description:
     'Haizea Studio es el estudio de fotografía, vídeo y creación de contenido de Cristina, fotógrafa y videógrafa especializada en sostenibilidad, lifestyle consciente y bienestar.',
   // TODO: crea una propiedad en https://analytics.google.com y sustituye este
