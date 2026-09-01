@@ -693,4 +693,4 @@ export const portfolioItems = [
 // TODO: sustituye por tu ID real de Formspree (o el servicio de formularios que elijas).
 // Regístrate gratis en https://formspree.io, crea un formulario y copia el ID de aquí:
 // https://formspree.io/f/TU_ID
-export const formspreeEndpoint = 'https://formspree.io/f/TU_ID';
+export const formspreeEndpoint = 'https://formspree.io/f/xeaqaybj';
