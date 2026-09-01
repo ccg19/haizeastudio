@@ -1,0 +1,119 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site.js';
+---
+
+<Layout
+  title="Aviso legal"
+  description="Información legal sobre la titularidad y condiciones de uso de la web de Haizea Studio."
+>
+  <section class="legal-header">
+    <div class="container">
+      <p class="eyebrow">Legal</p>
+      <h1 class="headline-editorial"><span class="tone-b">aviso legal.</span></h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose-section">
+      <p class="notice">
+        <strong>Nota para {site.firstName}:</strong> esta es una plantilla de partida, no
+        asesoría legal. La ley (LSSI-CE) exige identificar aquí a la persona o empresa
+        responsable de la web con datos reales — rellena los corchetes con tu NIF y domicilio
+        antes de publicar. Es habitual que esta página use tu nombre legal completo aunque el
+        resto de la marca use solo "{site.firstName}"; es el único sitio de la web donde la ley lo
+        pide. Si tienes dudas, que lo revise tu gestoría.
+      </p>
+
+      <h2>1. Datos identificativos</h2>
+      <p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa de que esta web, {site.url}, es titularidad de:</p>
+      <ul>
+        <li><strong>Titular:</strong> [Tu nombre y apellidos]</li>
+        <li><strong>Nombre comercial:</strong> {site.brand}</li>
+        <li><strong>NIF:</strong> [Tu NIF]</li>
+        <li><strong>Domicilio:</strong> [Tu domicilio fiscal]</li>
+        <li><strong>Email de contacto:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></li>
+      </ul>
+
+      <h2>2. Objeto</h2>
+      <p>
+        Esta web tiene como finalidad presentar los servicios profesionales de fotografía, vídeo
+        y creación de contenido de {site.brand}, y facilitar el contacto con potenciales clientes.
+      </p>
+
+      <h2>3. Condiciones de uso</h2>
+      <p>
+        El acceso y uso de esta web atribuye la condición de usuario e implica la aceptación de
+        este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos y a
+        no emplearlos para fines ilícitos o lesivos para los derechos de terceros.
+      </p>
+
+      <h2>4. Propiedad intelectual</h2>
+      <p>
+        Las fotografías, vídeos, textos, diseño y demás contenidos de esta web son propiedad de
+        {' '}{site.brand} o se muestran con autorización de sus respectivos titulares, y están
+        protegidos por derechos de propiedad intelectual. Queda prohibida su reproducción,
+        distribución o comunicación pública sin autorización previa, salvo en los casos permitidos
+        por la ley.
+      </p>
+
+      <h2>5. Responsabilidad</h2>
+      <p>
+        {site.brand} no garantiza la ausencia total de errores en el acceso o el contenido de la
+        web, ni que estos estén siempre actualizados, aunque pondrá los medios razonables para
+        evitarlo y corregirlo. No nos hacemos responsables de los daños derivados del mal uso de
+        esta web por parte del usuario.
+      </p>
+
+      <h2>6. Enlaces externos</h2>
+      <p>
+        Esta web incluye enlaces a sitios de terceros (como Instagram o Malt). {site.brand} no se
+        hace responsable del contenido ni de las políticas de privacidad de esas webs externas.
+      </p>
+
+      <h2>7. Legislación aplicable</h2>
+      <p>
+        Este aviso legal se rige por la legislación española. Para cualquier controversia
+        derivada del uso de esta web, las partes se someten a los juzgados y tribunales que
+        correspondan según la ley.
+      </p>
+
+      <h2>8. Protección de datos</h2>
+      <p>
+        El tratamiento de datos personales a través de esta web se rige por la{' '}
+        <a href="/politica-privacidad">política de privacidad</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-header {
+    padding-bottom: 1rem;
+  }
+
+  .prose-section {
+    max-width: 68ch;
+  }
+
+  .prose-section h2 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .prose-section ul {
+    color: var(--color-charcoal-soft);
+    padding-left: 1.2rem;
+  }
+
+  .prose-section li {
+    margin-bottom: 0.6rem;
+  }
+
+  .notice {
+    background: var(--color-sand);
+    border-radius: var(--radius-sm);
+    padding: 1.1rem 1.3rem;
+    font-size: 0.9rem;
+  }
+</style>

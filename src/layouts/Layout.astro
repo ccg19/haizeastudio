@@ -1,0 +1,124 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ConsentBanner from '../components/ConsentBanner.astro';
+import { site, socialLinks, services } from '../data/site.js';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+  // Pon noindex={true} en páginas que no deben aparecer en buscadores
+  // (por ejemplo, los portfolios por sector que se comparten por enlace directo).
+  noindex?: boolean;
+}
+
+const { title, description = site.description, image = '/og-image.jpg', noindex = false } = Astro.props;
+const pageTitle = title.includes(site.brand) ? title : `${title} | ${site.brand}`;
+const canonicalURL = new URL(Astro.url.pathname, site.url);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="apple-touch-icon" href="/logo.png" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={site.brand} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    <!-- TODO: da de alta la web en https://search.google.com/search-console,
+         verifica con el método "etiqueta HTML" y descomenta la línea de abajo
+         con el código que te den:
+    <meta name="google-site-verification" content="TU_CODIGO_AQUI" />
+    -->
+
+    <!-- Open Graph / redes sociales -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, site.url)} />
+    <meta property="og:locale" content="es_ES" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, site.url)} />
+
+    <!-- Tipografía: Fraunces (titulares) + Noto Serif Display itálica extra
+         condensada (la misma que usa tu dossier, para "our approach.", "who.",
+         "servicios.", etc.) + Inter (texto) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Noto+Serif+Display:ital,wdth,wght@1,62.5,400;1,62.5,700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ProfessionalService',
+      name: site.brand,
+      url: site.url,
+      description: site.description,
+      image: new URL(site.logo, site.url),
+      sameAs: [socialLinks.instagram, socialLinks.malt],
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: 'Servicios',
+        itemListElement: services.map((s) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: s.title,
+            description: s.short,
+          },
+        })),
+      },
+    })} />
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <Header />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+    <ConsentBanner />
+
+    <script>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reveal-ready');
+
+        const revealEls = document.querySelectorAll('.reveal');
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -10% 0px' }
+        );
+
+        revealEls.forEach((el) => io.observe(el));
+
+        // Salvaguarda: si por lo que sea el navegador no llega a disparar el
+        // observer (pestaña en segundo plano, etc.), el contenido no debe
+        // quedarse invisible para siempre.
+        window.setTimeout(() => {
+          revealEls.forEach((el) => el.classList.add('is-visible'));
+        }, 4000);
+      }
+    </script>
+  </body>
+</html>

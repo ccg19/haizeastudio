@@ -1,0 +1,150 @@
+---
+import { site, nav, socialLinks } from '../data/site.js';
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img class="footer-logo" src={site.logo} alt={site.brand} width="52" height="52" loading="lazy" />
+      <p class="tagline">{site.tagline}</p>
+    </div>
+
+    <nav class="footer-nav" aria-label="Navegación de pie de página">
+      <p class="footer-heading">Navegación</p>
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer-links">
+      <p class="footer-heading">Sígueme</p>
+      <ul>
+        <li><a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>
+        <li><a href={socialLinks.malt} target="_blank" rel="noopener noreferrer">Perfil en Malt</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-contact">
+      <p class="footer-heading">Contacto</p>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; {year} {site.brand}. Todos los derechos reservados.</p>
+    <ul class="footer-legal">
+      <li><a href="/aviso-legal">Aviso legal</a></li>
+      <li><a href="/politica-privacidad">Privacidad</a></li>
+      <li><a href="/politica-cookies">Cookies</a></li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-charcoal);
+    color: var(--color-sand);
+    padding-top: 4.5rem;
+  }
+
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .footer-logo {
+    border-radius: 10px;
+    margin-bottom: 1rem;
+  }
+
+  .footer-brand p {
+    color: rgba(240, 230, 214, 0.75);
+    margin: 0 0 0.2rem;
+  }
+
+  .footer-heading {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: var(--color-taupe);
+    margin: 0 0 1rem;
+  }
+
+  .footer-nav ul,
+  .footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .footer-nav a,
+  .footer-links a,
+  .footer-contact a {
+    color: rgba(240, 230, 214, 0.85);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.25s var(--ease);
+  }
+
+  .footer-nav a:hover,
+  .footer-links a:hover,
+  .footer-contact a:hover {
+    color: var(--color-taupe);
+  }
+
+  .footer-bottom {
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-bottom p {
+    color: rgba(240, 230, 214, 0.55);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .footer-legal {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+  }
+
+  .footer-legal a {
+    color: rgba(240, 230, 214, 0.55);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.25s var(--ease);
+  }
+
+  .footer-legal a:hover {
+    color: var(--color-taupe);
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

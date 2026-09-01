@@ -1,0 +1,174 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ClientBadge from '../components/ClientBadge.astro';
+import { clients, stats, testimonials } from '../data/site.js';
+---
+
+<Layout
+  title="Clientes y testimonios"
+  description="Marcas y colaboraciones: Acciona, Decathlon, National Geographic, Yamaha, Disney+, Rowenta, Krups, Samsung, Civitatis y más, con testimonios reales de clientes."
+>
+  <section class="clients-header">
+    <div class="container">
+      <p class="eyebrow">Confían en Haizea Studio</p>
+      <h1 class="headline-editorial"><span class="tone-b">trust.</span></h1>
+      <p class="lede">
+        A lo largo de estos años he tenido la suerte de trabajar con marcas de sectores muy
+        distintos, siempre desde el mismo enfoque narrativo y editorial.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="grid grid-3">
+        {clients.map((c) => (
+          <ClientBadge name={c.name} note={c.note} />
+        ))}
+      </div>
+
+      <p class="logos-note">
+        Nota interna: estas son insignias de texto de marcador de posición. Sustitúyelas por los
+        logotipos oficiales de cada marca en cuanto tengas autorización para usarlos.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container stats-row">
+      {stats.map((stat) => (
+        <div class="stat-card card">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="eyebrow">Lo que dicen de trabajar conmigo</p>
+      <h2 class="headline-editorial"><span class="tone-b">testimonios.</span></h2>
+      <div class="grid grid-2 testimonials-grid">
+        {testimonials.map((t) => (
+          <figure class="testimonial-card card">
+            <div class="testimonial-head">
+              <span class="testimonial-initial">{t.initial}</span>
+              <div>
+                <figcaption class="testimonial-name">{t.name}</figcaption>
+                <span class="testimonial-company">{t.company}</span>
+              </div>
+            </div>
+            <blockquote>“{t.quote}”</blockquote>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>¿Quieres ser el próximo proyecto?</h2>
+      <a href="/contacto" class="btn btn-outline-light">Hablemos</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .logos-note {
+    margin-top: 2rem;
+    font-size: 0.8rem;
+    color: var(--color-charcoal-soft);
+    font-style: italic;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--color-green);
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    color: var(--color-charcoal-soft);
+    font-size: 0.9rem;
+  }
+
+  .testimonials-grid {
+    margin-top: 3rem;
+  }
+
+  .testimonial-card {
+    margin: 0;
+    padding: 2rem;
+  }
+
+  .testimonial-head {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonial-initial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-green);
+    color: var(--color-white);
+    font-family: var(--font-serif);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-weight: 600;
+    color: var(--color-charcoal);
+    font-style: normal;
+  }
+
+  .testimonial-company {
+    font-size: 0.82rem;
+    color: var(--color-charcoal-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  blockquote {
+    margin: 0;
+    color: var(--color-charcoal-soft);
+    font-size: 0.95rem;
+  }
+
+  .cta-band {
+    background: var(--color-green-dark);
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 560px) {
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

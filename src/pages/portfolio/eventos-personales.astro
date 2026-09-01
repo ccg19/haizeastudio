@@ -1,0 +1,48 @@
+---
+// Página no listada: no está en el menú, no sale en Google ni en el sitemap.
+// Compártela solo con quien te contacte por una boda o celebración.
+import Layout from '../../layouts/Layout.astro';
+import PortfolioMarquee from '../../components/PortfolioMarquee.astro';
+import { portfolioSectors, portfolioItems } from '../../data/site.js';
+
+const sector = portfolioSectors.find((s) => s.slug === 'eventos-personales');
+const items = portfolioItems.filter((item) => item.sector === 'eventos-personales');
+---
+
+<Layout title={`Portfolio — ${sector.label}`} description={sector.intro} noindex>
+  <section class="sector-header">
+    <div class="container">
+      <p class="eyebrow">Portfolio</p>
+      <h1 class="headline-editorial"><span class="tone-b">{sector.label}.</span></h1>
+      <p class="lede">{sector.intro}</p>
+    </div>
+  </section>
+
+  {sector.subsections.map((sub, i) => {
+    const subItems = items.filter((item) => item.subsection === sub.key);
+    return (
+      <section class="sector-band">
+        <div class="container">
+          <h2 class="band-title">{sub.label}</h2>
+        </div>
+        <PortfolioMarquee items={subItems} reverse={i % 2 === 1} portrait />
+      </section>
+    );
+  })}
+</Layout>
+
+<style>
+  .sector-header {
+    padding-bottom: 1rem;
+  }
+
+  .sector-band {
+    padding-block: 2.5rem;
+  }
+
+  .band-title {
+    font-family: var(--font-serif-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    margin-bottom: 1.25rem;
+  }
+</style>

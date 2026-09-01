@@ -1,0 +1,129 @@
+---
+interface Item {
+  title: string;
+  type: 'foto' | 'video';
+  image?: string | null;
+  alt?: string;
+  link?: string;
+  linkLabel?: string;
+}
+
+interface Props {
+  items: Item[];
+  portraitLayout?: boolean;
+}
+
+const { items, portraitLayout = false } = Astro.props;
+---
+
+{items.length === 0 ? (
+  <p class="empty-note">Todavía no hay contenido en esta sección — vuelve pronto.</p>
+) : (
+  <div class:list={['grid', 'grid-3', 'portfolio-grid', portraitLayout && 'is-portrait']}>
+    {items.map((item) => (
+      <div class="portfolio-item">
+        {item.image ? (
+          <img src={item.image} alt={item.alt} loading="lazy" />
+        ) : (
+          <a class="video-card" href={item.link} target="_blank" rel="noopener noreferrer">
+            <span class="play-icon" aria-hidden="true">&#9658;</span>
+            <span class="video-card-label">Vídeo</span>
+          </a>
+        )}
+        <div class="portfolio-caption">
+          <span>{item.title}</span>
+          {item.link && (
+            <a href={item.link} target="_blank" rel="noopener noreferrer" class="portfolio-link">
+              {item.linkLabel} &rarr;
+            </a>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
+<style>
+  .empty-note {
+    color: var(--color-charcoal-soft);
+    font-style: italic;
+  }
+
+  .portfolio-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+
+  .portfolio-item img:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .portfolio-grid.is-portrait .portfolio-item img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    background: linear-gradient(155deg, var(--color-green), var(--color-green-dark));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: var(--color-cream);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+
+  .video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .play-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(245, 243, 238, 0.15);
+    border: 1px solid rgba(245, 243, 238, 0.5);
+    font-size: 1.1rem;
+    padding-left: 4px;
+  }
+
+  .video-card-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .portfolio-caption {
+    margin-top: 0.6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    font-size: 0.88rem;
+    color: var(--color-charcoal-soft);
+  }
+
+  .portfolio-link {
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: none;
+    font-size: 0.82rem;
+  }
+
+  .portfolio-link:hover {
+    text-decoration: underline;
+  }
+</style>

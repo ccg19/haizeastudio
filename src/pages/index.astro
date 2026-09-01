@@ -1,0 +1,497 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import { site, stats, services, clients, serviceWords, socialLinks } from '../data/site.js';
+
+const heroTitleWords = site.tagline.split(' | ');
+
+const heroGalleryImages = [
+  { src: '/fotos/eventos/evento-01.jpg', alt: 'Cobertura de una conferencia corporativa' },
+  { src: '/fotos/retrato/retrato-01.jpg', alt: 'Retrato corporativo de un cliente' },
+  { src: '/fotos/eventos/evento-03.jpg', alt: 'Networking de marca en un jardín urbano' },
+  { src: '/fotos/retrato/retrato-02.jpg', alt: 'Retrato corporativo de una clienta' },
+  { src: '/fotos/marca-redes/marca-03.jpg', alt: 'Rodaje de campaña de vídeo para Rowenta' },
+  { src: '/fotos/eventos/evento-05.jpg', alt: 'Momento informal durante una jornada de empresa' },
+  { src: '/fotos/marca-redes/marca-12.jpg', alt: 'Videoclip musical para Yamaha Music' },
+  { src: '/fotos/marca-redes/marca-07.jpg', alt: 'Conversación durante un evento de marca' },
+  { src: '/fotos/retrato/retrato-04.jpg', alt: 'Retrato editorial de un profesional creativo' },
+  { src: '/fotos/eventos/evento-02.jpg', alt: 'Ponencia en un evento corporativo' },
+  { src: '/fotos/marca-redes/marca-04.jpg', alt: 'Making of de campaña de vídeo para Shiseido' },
+  { src: '/fotos/retrato/retrato-03.jpg', alt: 'Retrato corporativo de una clienta' },
+  { src: '/fotos/eventos/evento-04.jpg', alt: 'Networking durante un evento corporativo' },
+  { src: '/fotos/marca-redes/marca-10.jpg', alt: 'Making of de una entrevista en vídeo' },
+  { src: '/fotos/marca-redes/marca-09.jpg', alt: 'Retrato corporativo de una profesional' },
+  { src: '/fotos/marca-redes/marca-11.jpg', alt: 'Retrato corporativo de una profesional' },
+  { src: '/fotos/marca-redes/marca-13.jpg', alt: 'Retrato editorial de una profesional creativa' },
+  { src: '/fotos/marca-redes/marca-14.jpg', alt: 'Ponencia en un evento corporativo' },
+  { src: '/fotos/marca-redes/marca-19.jpg', alt: 'Making of de un rodaje de contenido de marca' },
+  { src: '/fotos/marca-redes/marca-20.jpg', alt: 'Networking durante un evento corporativo' },
+  { src: '/fotos/marca-redes/marca-21.jpg', alt: 'Evento de marca por la noche' },
+  { src: '/fotos/marca-redes/marca-22.jpg', alt: 'Retrato editorial de una profesional' },
+  { src: '/fotos/marca-redes/marca-23.jpg', alt: 'Sesión de trabajo creativo en equipo' },
+  { src: '/fotos/marca-redes/marca-25.jpg', alt: 'Making of de contenido para redes sociales' },
+  { src: '/fotos/marca-redes/marca-26.jpg', alt: 'Rodaje de campaña de vídeo para Rowenta' },
+  { src: '/fotos/marca-redes/marca-27.jpg', alt: 'Retrato corporativo de una profesional' },
+  { src: '/fotos/marca-redes/marca-28.jpg', alt: 'Networking durante un evento corporativo' },
+  { src: '/fotos/marca-redes/marca-29.jpg', alt: 'Networking al aire libre durante un evento' },
+  { src: '/fotos/marca-redes/marca-30.jpg', alt: 'Campaña de moda infantil' },
+  { src: '/fotos/marca-redes/marca-31.jpg', alt: 'Campaña de moda infantil' },
+  { src: '/fotos/marca-redes/marca-32.jpg', alt: 'Campaña de moda infantil' },
+];
+---
+
+<Layout
+  title={`${site.firstName} — Fotógrafa, Filmmaker y Storyteller`}
+  description="Fotografía y vídeo con mirada narrativa para marcas que quieren un activo visual real, no solo una foto bonita."
+>
+  <section class="hero section-dark">
+    <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+    <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <p class="hero-tagline fade-in fade-in-d1">| {site.taglineShort} |</p>
+      <h1 class="hero-title fade-in fade-in-d1">
+        {heroTitleWords.map((word, i) => (
+          <>
+            <span>{word}</span>
+            {i < heroTitleWords.length - 1 && <span class="hero-title-sep" aria-hidden="true">·</span>}
+          </>
+        ))}
+      </h1>
+      <p class="lede hero-lede fade-in fade-in-d2">
+        Fotografía y vídeo con mirada narrativa, pensados para comunicar con impacto real.
+        Transformo un evento o una sesión en un activo visual que puedes utilizar durante meses.
+      </p>
+      <div class="hero-actions fade-in fade-in-d3">
+        <a href="/contacto" class="btn btn-fill-light">Hablemos de tu proyecto</a>
+        <a href="/servicios" class="btn btn-outline-light">Ver servicios</a>
+      </div>
+    </div>
+    <div class="marquee marquee-reverse hero-gallery fade-in fade-in-d3">
+      <div class="marquee-track">
+        {heroGalleryImages.map((img) => (
+          <div class="hero-gallery-item">
+            <img src={img.src} alt={img.alt} loading="lazy" />
+          </div>
+        ))}
+        {heroGalleryImages.map((img) => (
+          <div class="hero-gallery-item" aria-hidden="true">
+            <img src={img.src} alt="" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="marquee hero-marquee fade-in fade-in-d3">
+      <div class="marquee-track">
+        {serviceWords.map((w) => (
+          <span class="marquee-item hero-marquee-item">{w}</span>
+        ))}
+        {serviceWords.map((w) => (
+          <span class="marquee-item hero-marquee-item" aria-hidden="true">{w}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-band">
+    <div class="container stats-grid">
+      {stats.map((stat, i) => (
+        <div class:list={['stat', 'reveal', `reveal-d${i + 1}`]}>
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+    <div class="container">
+      <p class="stats-source">
+        Datos de mi trayectoria en{' '}
+        <a href={socialLinks.malt} target="_blank" rel="noopener noreferrer">Malt &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container section-heading reveal">
+      <p class="eyebrow">Qué hago</p>
+      <h2 class="headline-editorial"><span class="tone-b">servicios.</span></h2>
+      <p class="lede">
+        Cuatro formas de trabajar juntos, desde una sesión puntual hasta la dirección narrativa
+        completa de una campaña.
+      </p>
+    </div>
+    <div class="container">
+      <div class="grid grid-2" style="margin-top: 3rem;">
+        {services.map((s, i) => (
+          <div class:list={['reveal', `reveal-d${i + 1}`]}>
+            <ServiceCard title={s.title} description={s.short} href={`/servicios#${s.slug}`} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section-alt showcase">
+    <div class="container showcase-intro reveal">
+      <p class="eyebrow">Sobre mí</p>
+      <h2 class="headline-editorial"><span class="tone-b">who.</span></h2>
+      <p class="pull-quote">
+        Soy {site.firstName}, periodista, fotógrafa y videógrafa freelance. Desde hace más de diez
+        años ayudo a marcas y equipos a convertir un día de grabación en contenido que comunica de
+        verdad, no solo que se ve bien: cada proyecto parte de una pregunta narrativa antes que de
+        una composición.
+      </p>
+      <a href="/sobre-mi" class="btn btn-secondary">Conoce mi trayectoria</a>
+    </div>
+    <div class="container showcase-grid">
+      <img
+        class="reveal"
+        src="/fotos/retrato/retrato-01.jpg"
+        alt="Retrato corporativo de un cliente de Haizea Studio"
+        loading="lazy"
+      />
+      <img
+        class="reveal reveal-d2"
+        src="/fotos/eventos/evento-03.jpg"
+        alt="Cobertura de un evento corporativo de marca"
+        loading="lazy"
+      />
+      <img
+        class="reveal reveal-d3"
+        src="/fotos/marca-redes/marca-13.jpg"
+        alt="Retrato editorial de una profesional creativa"
+        loading="lazy"
+      />
+      <img
+        class="reveal reveal-d4"
+        src="/fotos/eventos/evento-04.jpg"
+        alt="Networking durante un evento corporativo"
+        loading="lazy"
+      />
+    </div>
+  </section>
+
+  <section>
+    <div class="container section-heading reveal">
+      <p class="eyebrow">Con quién he trabajado</p>
+      <h2 class="headline-editorial"><span class="tone-b">trust.</span></h2>
+    </div>
+    <div class="marquee reveal">
+      <div class="marquee-track">
+        {clients.map((c) => (
+          <span class="marquee-item">{c.name}</span>
+        ))}
+        {clients.map((c) => (
+          <span class="marquee-item" aria-hidden="true">{c.name}</span>
+        ))}
+      </div>
+    </div>
+    <div class="container">
+      <p style="margin-top: 2rem;"><a href="/clientes" class="service-link-plain">Ver todos los clientes y testimonios &rarr;</a></p>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner reveal">
+      <h2>¿Tienes un proyecto en mente?</h2>
+      <p class="lede" style="margin: 0 auto 1.75rem; color: rgba(255,255,255,0.85);">
+        Cuéntame qué necesitas y te propongo la mejor forma de contarlo.
+      </p>
+      <a href="/contacto" class="btn btn-outline-light">Escríbeme</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(5rem, 10vw, 7.5rem);
+    padding-bottom: 0;
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-glow-1 {
+    width: 460px;
+    height: 460px;
+    top: -160px;
+    left: -120px;
+    background: var(--color-taupe);
+    animation: hero-drift-a 20s ease-in-out infinite;
+  }
+
+  .hero-glow-2 {
+    width: 380px;
+    height: 380px;
+    bottom: -180px;
+    right: -100px;
+    background: var(--color-green-tint);
+    animation: hero-drift-b 24s ease-in-out infinite;
+  }
+
+  @keyframes hero-drift-a {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, 35px) scale(1.1); }
+  }
+
+  @keyframes hero-drift-b {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-40px, -30px) scale(1.08); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-glow {
+      animation: none;
+    }
+  }
+
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: clamp(2.5rem, 5vw, 3.5rem);
+  }
+
+  .hero-tagline {
+    font-size: 0.88rem;
+    letter-spacing: 0.04em;
+    color: rgba(245, 243, 238, 0.7);
+    margin: 0 0 3.5rem;
+  }
+
+  .hero-title-sep {
+    display: inline-block;
+    opacity: 0.4;
+    font-weight: 400;
+    margin: 0 0.22em;
+  }
+
+  .hero-title {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4.6vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--color-cream);
+    white-space: nowrap;
+    margin: 0 0 1.5rem;
+  }
+
+  @media (max-width: 720px) {
+    .hero-title {
+      white-space: normal;
+    }
+  }
+
+  .hero-lede {
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 2.25rem;
+  }
+
+  .hero-gallery {
+    position: relative;
+    z-index: 1;
+    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .hero-gallery .marquee-track {
+    gap: 1.25rem;
+    align-items: center;
+    animation-duration: 90s;
+  }
+
+  .hero-gallery-item {
+    flex: none;
+    width: 260px;
+  }
+
+  .hero-gallery-item img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: 0 20px 45px -18px rgba(0, 0, 0, 0.45);
+  }
+
+  .hero-gallery-item:nth-child(even) {
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .hero-gallery-item {
+      width: 200px;
+    }
+  }
+
+  .hero-marquee {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(245, 243, 238, 0.15);
+    padding-top: 1.75rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero-marquee .marquee-track {
+    gap: 2.5rem;
+  }
+
+  .hero-marquee-item {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(245, 243, 238, 0.65);
+  }
+
+  .stats-band {
+    background: var(--color-charcoal);
+    padding: 3.5rem 0;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 2.4rem;
+    color: var(--color-taupe);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    color: rgba(240, 230, 214, 0.75);
+    font-size: 0.9rem;
+  }
+
+  .stats-source {
+    text-align: center;
+    margin: 2rem 0 0;
+    font-size: 0.85rem;
+    color: rgba(240, 230, 214, 0.6);
+  }
+
+  .stats-source a {
+    color: var(--color-taupe);
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .stats-source a:hover {
+    text-decoration: underline;
+  }
+
+  .section-heading {
+    max-width: 640px;
+  }
+
+  .showcase-intro {
+    max-width: 780px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .pull-quote {
+    font-family: var(--font-sans);
+    font-style: normal;
+    font-weight: 300;
+    font-size: clamp(1.15rem, 2vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--color-charcoal-soft);
+    max-width: 68ch;
+    margin: 0 auto 1.75rem;
+  }
+
+  .showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 4rem;
+    align-items: start;
+  }
+
+  .showcase-grid img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+
+  .showcase-grid img:nth-child(even) {
+    margin-top: 3rem;
+  }
+
+  .marquee-item {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--color-green);
+    white-space: nowrap;
+  }
+
+  .cta-band {
+    background: var(--color-green-dark);
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    color: var(--color-white);
+  }
+
+  .service-link-plain {
+    font-weight: 600;
+    color: var(--color-green);
+    text-decoration: none;
+  }
+
+  .service-link-plain:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 860px) {
+    .stats-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .showcase-grid {
+      grid-template-columns: 1fr;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .showcase-grid img:nth-child(even) {
+      margin-top: 0;
+    }
+  }
+</style>

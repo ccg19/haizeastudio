@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site, stats, equipment } from '../data/site.js';
+---
+
+<Layout
+  title="Sobre mí — Fotógrafa y filmmaker"
+  description="Fotógrafa y videógrafa con formación periodística. Enfoque narrativo y editorial en sostenibilidad, lifestyle consciente y bienestar."
+>
+  <section class="about-hero">
+    <div class="container about-hero-inner">
+      <p class="eyebrow">Sobre mí</p>
+      <h1 class="headline-editorial"><span class="tone-b">who.</span></h1>
+      <p class="lede about-hero-lede">
+        Soy {site.firstName}, periodista, fotógrafa y videógrafa. Trabajo bajo mi nombre y bajo
+        la marca Haizea Studio.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container stats-row">
+      {stats.map((stat) => (
+        <div class="stat-card card">
+          <span class="stat-value">{stat.value}</span>
+          <span class="stat-label">{stat.label}</span>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose-section">
+      <p class="eyebrow">Mi enfoque</p>
+      <h2 class="headline-editorial"><span class="tone-a">our</span> <span class="tone-b">style.</span></h2>
+      <p>
+        Desde Haizea, mi estudio de creación y gestión de contenido audiovisual, doy forma a tu
+        mensaje para captar a tu audiencia a través del lenguaje audiovisual y el mundo digital.
+        Me apasiona la comunicación: llevo más de diez años transmitiendo ideas, mensajes e
+        historias a través de la fotografía, el vídeo, el storytelling, el entorno digital y las
+        redes sociales.
+      </p>
+      <p>
+        Siempre con el cuidado estético que define mi trabajo, combinado con el alma narrativa que
+        corre por mis venas. Mi recorrido ha estado siempre ligado al mundo digital y a grandes
+        marcas como National Geographic, Decathlon, Disney+ o Yamaha Music.
+      </p>
+      <p>
+        Antes de dedicarme a la fotografía y el vídeo a tiempo completo, estudié periodismo. Esa
+        formación es la que marca cómo trabajo hoy: para mí, cada encargo empieza con una pregunta
+        editorial —qué historia estamos contando, para quién y por qué importa— y solo después
+        llega la cámara. Esa mirada narrativa es la que aplico a mi especialización: sostenibilidad,
+        lifestyle consciente y bienestar.
+      </p>
+      <p>
+        Según las necesidades de cada proyecto, trabajo de la mano de un equipo especializado en
+        gestión y producción de contenido digital y redes sociales. Nos encanta escoger proyectos
+        que nos apasionen, de los que podamos formar parte, no solo a nivel profesional, sino
+        también aportando nuestra mejor energía y experiencia durante todo el proceso.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <div class="container">
+      <p class="eyebrow">Cómo trabajo</p>
+      <h2 class="headline-editorial"><span class="tone-b">equipo técnico.</span></h2>
+      <ul class="equipment-list">
+        {equipment.map((item) => <li>{item}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container cta-inner-left">
+      <h2>Trabajemos juntos</h2>
+      <p class="lede">
+        Si tu proyecto necesita algo más que una foto bonita, hablemos.
+      </p>
+      <a href="/contacto" class="btn btn-primary">Ir a contacto</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .about-hero-inner {
+    max-width: 680px;
+  }
+
+  .about-hero-lede {
+    max-width: none;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .stat-card {
+    padding: 2rem 1.25rem;
+  }
+
+  .stat-value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: var(--color-green);
+    letter-spacing: -0.01em;
+  }
+
+  .stat-label {
+    color: var(--color-charcoal-soft);
+    font-size: 0.9rem;
+  }
+
+  .prose-section {
+    max-width: 68ch;
+  }
+
+  .equipment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem 2.5rem;
+    max-width: 760px;
+  }
+
+  .equipment-list li {
+    padding-left: 1.1rem;
+    position: relative;
+    color: rgba(245, 243, 238, 0.9);
+  }
+
+  .equipment-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    background: var(--color-taupe);
+    border-radius: 50%;
+  }
+
+  @media (max-width: 860px) {
+    .stats-row {
+      grid-template-columns: 1fr;
+    }
+
+    .equipment-list {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

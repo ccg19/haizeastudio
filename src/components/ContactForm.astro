@@ -1,0 +1,96 @@
+---
+import { formspreeEndpoint } from '../data/site.js';
+---
+
+<form class="contact-form" action={formspreeEndpoint} method="POST">
+  <input type="text" name="_gotcha" class="visually-hidden" tabindex="-1" autocomplete="off" />
+  <input type="hidden" name="_subject" value="Nuevo mensaje desde haizeastudio.com" />
+
+  <div class="field">
+    <label for="name">Nombre *</label>
+    <input id="name" name="name" type="text" required autocomplete="name" />
+  </div>
+
+  <div class="field">
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required autocomplete="email" />
+  </div>
+
+  <div class="field">
+    <label for="project-type">Tipo de proyecto *</label>
+    <select id="project-type" name="project_type" required>
+      <option value="">Selecciona una opción</option>
+      <option value="Fotografía">Fotografía</option>
+      <option value="Vídeo">Vídeo</option>
+      <option value="Contenido para redes sociales">Contenido para redes sociales</option>
+      <option value="Dirección de narrativa / storytelling">Dirección de narrativa / storytelling</option>
+      <option value="Otro">Otro</option>
+    </select>
+  </div>
+
+  <div class="field">
+    <label for="message">Cuéntame sobre tu proyecto *</label>
+    <textarea id="message" name="message" rows="6" required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+  <p class="form-note">
+    Al enviar este formulario, aceptas que use estos datos únicamente para responder a tu consulta.
+  </p>
+</form>
+
+<style>
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 560px;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-charcoal);
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    color: var(--color-charcoal);
+    transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+  }
+
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    border-color: var(--color-green);
+    box-shadow: 0 0 0 3px rgba(52, 87, 86, 0.14);
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .btn {
+    align-self: flex-start;
+  }
+
+  .form-note {
+    font-size: 0.8rem;
+    color: var(--color-charcoal-soft);
+    margin: 0;
+  }
+</style>

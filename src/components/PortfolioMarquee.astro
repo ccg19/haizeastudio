@@ -1,0 +1,194 @@
+---
+// Tira dinámica en movimiento continuo para portfolio, igual que la de la
+// home. La segunda mitad (duplicada para el bucle infinito) se marca
+// aria-hidden para que un lector de pantalla no la anuncie dos veces.
+interface Item {
+  title: string;
+  image?: string | null;
+  alt?: string;
+  link?: string;
+  linkLabel?: string;
+  video?: boolean;
+}
+
+interface Props {
+  items: Item[];
+  reverse?: boolean;
+  portrait?: boolean;
+}
+
+const { items, reverse = false, portrait = false } = Astro.props;
+---
+
+{items.length === 0 ? (
+  <p class="empty-note">Todavía no hay contenido en esta sección — vuelve pronto.</p>
+) : (
+  <div class:list={['marquee', 'portfolio-marquee', reverse && 'marquee-reverse', portrait && 'is-portrait']}>
+    <div class="marquee-track">
+      {items.map((item) => (
+        <div class="pm-item">
+          {item.image ? (
+            item.video && item.link ? (
+              <a class="pm-media" href={item.link} target="_blank" rel="noopener noreferrer">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+                <span class="pm-play" aria-hidden="true">&#9658;</span>
+              </a>
+            ) : item.video ? (
+              <div class="pm-media">
+                <img src={item.image} alt={item.alt} loading="lazy" />
+                <span class="pm-play" aria-hidden="true">&#9658;</span>
+              </div>
+            ) : (
+              <img src={item.image} alt={item.alt} loading="lazy" />
+            )
+          ) : (
+            <a class="pm-video" href={item.link} target="_blank" rel="noopener noreferrer">
+              <span class="pm-play" aria-hidden="true">&#9658;</span>
+              <span class="pm-video-label">Vídeo</span>
+            </a>
+          )}
+          <span class="pm-caption">{item.title}</span>
+        </div>
+      ))}
+      {items.map((item) => (
+        <div class="pm-item" aria-hidden="true">
+          {item.image ? (
+            item.video ? (
+              <div class="pm-media">
+                <img src={item.image} alt="" loading="lazy" />
+                <span class="pm-play" aria-hidden="true">&#9658;</span>
+              </div>
+            ) : (
+              <img src={item.image} alt="" loading="lazy" />
+            )
+          ) : (
+            <span class="pm-video" tabindex="-1">
+              <span class="pm-play" aria-hidden="true">&#9658;</span>
+              <span class="pm-video-label">Vídeo</span>
+            </span>
+          )}
+          <span class="pm-caption">{item.title}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+<style>
+  .empty-note {
+    color: var(--color-charcoal-soft);
+    font-style: italic;
+  }
+
+  .portfolio-marquee .marquee-track {
+    gap: 1.75rem;
+    align-items: flex-start;
+  }
+
+  .pm-item {
+    flex: none;
+    width: 400px;
+  }
+
+  .pm-item:nth-child(even) {
+    margin-top: 2.5rem;
+  }
+
+  .is-portrait .pm-item {
+    width: 340px;
+  }
+
+  .pm-item img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    display: block;
+  }
+
+  .is-portrait .pm-item img {
+    aspect-ratio: 4 / 5;
+  }
+
+  .pm-media {
+    position: relative;
+    display: block;
+  }
+
+  .pm-media .pm-play {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .pm-video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    background: linear-gradient(155deg, var(--color-green), var(--color-green-dark));
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    text-decoration: none;
+    color: var(--color-cream);
+  }
+
+  .is-portrait .pm-video {
+    aspect-ratio: 4 / 5;
+  }
+
+  .pm-play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(26, 26, 26, 0.45);
+    backdrop-filter: blur(2px);
+    border: 1px solid rgba(245, 243, 238, 0.7);
+    color: var(--color-cream);
+    font-size: 1rem;
+    padding-left: 3px;
+    box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.5);
+  }
+
+  .pm-video .pm-play {
+    width: 60px;
+    height: 60px;
+    background: rgba(245, 243, 238, 0.15);
+    font-size: 1.3rem;
+    padding-left: 4px;
+  }
+
+  .pm-video-label {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .pm-caption {
+    display: block;
+    margin-top: 0.75rem;
+    font-size: 0.92rem;
+    color: var(--color-charcoal-soft);
+  }
+
+  @media (max-width: 640px) {
+    .pm-item {
+      width: 280px;
+    }
+
+    .is-portrait .pm-item {
+      width: 240px;
+    }
+
+    .pm-item:nth-child(even) {
+      margin-top: 1.5rem;
+    }
+  }
+</style>

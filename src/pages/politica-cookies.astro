@@ -1,0 +1,100 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { site } from '../data/site.js';
+---
+
+<Layout
+  title="Política de cookies"
+  description="Qué cookies usa la web de Haizea Studio, con qué finalidad y cómo puedes gestionarlas."
+>
+  <section class="legal-header">
+    <div class="container">
+      <p class="eyebrow">Legal</p>
+      <h1 class="headline-editorial"><span class="tone-b">política de cookies.</span></h1>
+    </div>
+  </section>
+
+  <section>
+    <div class="container prose-section">
+      <p>
+        Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long' })}.
+      </p>
+
+      <h2>¿Qué son las cookies?</h2>
+      <p>
+        Una cookie es un pequeño archivo que se guarda en tu navegador cuando visitas una web.
+        Sirve para recordar información sobre tu visita, como tu idioma o, en nuestro caso, si
+        aceptaste o no el uso de cookies analíticas.
+      </p>
+
+      <h2>Cookies que usamos</h2>
+      <p>Esta web usa dos tipos de cookies, y solo uno de ellos requiere tu consentimiento:</p>
+      <ul>
+        <li>
+          <strong>Técnicas (siempre activas):</strong> guardamos en tu navegador, mediante
+          <code>localStorage</code> (no es técnicamente una cookie, pero cumple una función
+          similar), si has aceptado o rechazado las cookies analíticas, para no volver a
+          preguntarte en cada visita.
+        </li>
+        <li>
+          <strong>Analíticas (solo si las aceptas):</strong> usamos Google Analytics para entender
+          cuánta gente visita la web, qué páginas ve y desde dónde llega. Google Analytics instala
+          cookies como <code>_ga</code> y <code>_ga_*</code>, que identifican tu navegador de
+          forma anónima (con la IP anonimizada) durante un máximo de 13 meses.
+        </li>
+      </ul>
+      <p>
+        No usamos cookies de publicidad ni de seguimiento entre webs de terceros.
+      </p>
+
+      <h2>Cómo gestionar tu elección</h2>
+      <p>
+        Puedes aceptar o rechazar las cookies analíticas en el aviso que aparece la primera vez
+        que visitas la web. Si quieres cambiar tu elección más adelante, borra los datos de
+        navegación de este sitio desde la configuración de tu navegador y el aviso volverá a
+        aparecer. También puedes bloquear o eliminar cookies en cualquier momento desde los
+        ajustes de tu navegador (Chrome, Safari, Firefox, Edge...); ten en cuenta que bloquear
+        todas las cookies puede afectar al funcionamiento de otras webs.
+      </p>
+
+      <h2>Más información</h2>
+      <p>
+        Puedes consultar cómo trata Google los datos de Analytics en su
+        {' '}<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
+        Para cualquier duda sobre esta política, escríbenos a{' '}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .legal-header {
+    padding-bottom: 1rem;
+  }
+
+  .prose-section {
+    max-width: 68ch;
+  }
+
+  .prose-section h2 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .prose-section ul {
+    color: var(--color-charcoal-soft);
+    padding-left: 1.2rem;
+  }
+
+  .prose-section li {
+    margin-bottom: 0.6rem;
+  }
+
+  .prose-section code {
+    background: var(--color-sand);
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+</style>

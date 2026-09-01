@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { services } from '../data/site.js';
+---
+
+<Layout
+  title="Servicios de fotografía y vídeo"
+  description="Fotografía de eventos y retrato corporativo, vídeo de marca, edición de contenido para redes sociales y dirección de narrativa."
+>
+  <section class="services-header">
+    <div class="container">
+      <p class="eyebrow">Cómo puedo ayudarte</p>
+      <h1 class="headline-editorial"><span class="tone-a">our</span> <span class="tone-b">approach.</span></h1>
+      <p class="lede">
+        Mi objetivo no es solo crear contenido estético, sino capturarlo desde tu narrativa de
+        marca, creando contenido auténtico que refleje la energía y el valor de tu servicio,
+        producto y audiencia.
+      </p>
+      <p class="lede">
+        Cada shooting es único, y también debe serlo la forma de contarlo. Por eso estos servicios
+        están pensados como un punto de partida flexible, más que como soluciones cerradas:
+        cuatro líneas de trabajo que puedo ofrecer por separado o combinadas dentro de un mismo
+        proyecto, siempre con la misma base: entender primero qué historia hay que contar.
+      </p>
+    </div>
+  </section>
+
+  <section class="services-list">
+    <div class="container">
+      {services.map((s, i) => (
+        <div class:list={['service-row', i % 2 === 1 && 'is-reversed']} id={s.slug}>
+          <div class="service-row-copy">
+            <span class="tag">{`0${i + 1}`}</span>
+            <h2>{s.title}</h2>
+            <p>{s.description}</p>
+            <ul>
+              {s.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+          <div class="service-row-media">
+            <img src={s.image} alt={`Fotografía de ejemplo del servicio ${s.title}`} loading="lazy" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner">
+      <h2>¿Empezamos a hablar de tu proyecto?</h2>
+      <a href="/contacto" class="btn btn-outline-light">Contactar</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    padding: 3.5rem 0;
+    border-bottom: 1px solid rgba(43, 38, 33, 0.08);
+  }
+
+  .service-row:last-child {
+    border-bottom: none;
+  }
+
+  .service-row.is-reversed .service-row-media {
+    order: -1;
+  }
+
+  .service-row ul {
+    padding-left: 1.1rem;
+    color: var(--color-charcoal-soft);
+  }
+
+  .service-row li {
+    margin-bottom: 0.4rem;
+  }
+
+  .service-row-media img {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+  }
+
+  .cta-band {
+    background: var(--color-green-dark);
+    text-align: center;
+  }
+
+  .cta-band h2 {
+    color: var(--color-white);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 860px) {
+    .service-row,
+    .service-row.is-reversed .service-row-media {
+      grid-template-columns: 1fr;
+      order: 0;
+    }
+
+    .service-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

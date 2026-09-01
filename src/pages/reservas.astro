@@ -1,0 +1,171 @@
+---
+// Página de muestra: aún no tiene un calendario/pasarela de pago real conectado.
+// Cuando decidas la herramienta (Acuity Scheduling, Calendly + Stripe, HoneyBook...),
+// sustituye el bloque "widget-placeholder" de abajo por su código de inserción
+// (normalmente un <iframe> o un <script> que te da la propia herramienta),
+// y quita `noindex` de aquí abajo para que la página empiece a indexarse.
+import Layout from '../layouts/Layout.astro';
+import { socialLinks } from '../data/site.js';
+
+const steps = [
+  {
+    number: '01',
+    title: 'Elige tu fecha',
+    text: 'Consulta la disponibilidad real en el calendario y selecciona el día que mejor te venga.',
+  },
+  {
+    number: '02',
+    title: 'Reserva con un 20%',
+    text: 'Confirma la fecha con un depósito seguro del 20% del presupuesto total, a través de la pasarela de pago.',
+  },
+  {
+    number: '03',
+    title: 'Recibe la confirmación',
+    text: 'Te llega al momento por email, con todos los detalles de la sesión y los siguientes pasos.',
+  },
+];
+---
+
+<Layout
+  title="Reservas"
+  description="Reserva tu sesión de fotografía o vídeo directamente desde el calendario, confirmando con un depósito del 20%."
+  noindex
+>
+  <section class="reservas-header">
+    <div class="container">
+      <p class="eyebrow">Reserva tu fecha</p>
+      <h1 class="headline-editorial"><span class="tone-b">reservas.</span></h1>
+      <p class="lede">
+        Reserva tu fecha directamente desde aquí: eliges el día disponible en mi calendario y
+        confirmas con un depósito del 20%. El resto se abona el día de la sesión.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container">
+      <div class="grid grid-3">
+        {steps.map((step) => (
+          <div class="step-card card">
+            <span class="step-number">{step.number}</span>
+            <h3>{step.title}</h3>
+            <p>{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <p class="eyebrow">Calendario y pago</p>
+      <h2 class="headline-editorial"><span class="tone-b">disponibilidad.</span></h2>
+
+      <!-- TODO: sustituye este bloque por el widget real de tu herramienta de
+           reservas (Acuity Scheduling, Calendly + Stripe, HoneyBook...) -->
+      <div class="widget-placeholder">
+        <span class="widget-placeholder-label">Calendario de reservas</span>
+        <p>
+          Aquí se integrará el calendario con disponibilidad en tiempo real y el pago del
+          depósito, en cuanto conectes tu cuenta de Acuity Scheduling, Calendly u otra
+          herramienta similar.
+        </p>
+      </div>
+
+      <p class="deposit-note">
+        Un depósito del 20% confirma tu reserva; el resto se abona el día de la sesión.
+      </p>
+    </div>
+  </section>
+
+  <section class="section-alt">
+    <div class="container cta-fallback">
+      <h2 class="headline-editorial"><span class="tone-b">mientras tanto.</span></h2>
+      <p class="lede">
+        Si prefieres, cuéntame directamente tu proyecto y cuadramos la fecha por email — o a
+        través de mi perfil en Malt.
+      </p>
+      <div class="cta-fallback-actions">
+        <a href="/contacto" class="btn btn-primary">Escríbeme</a>
+        <a href={socialLinks.malt} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+          Ver perfil en Malt
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .reservas-header {
+    padding-bottom: 1rem;
+  }
+
+  .step-card {
+    padding: 2.25rem;
+  }
+
+  .step-number {
+    display: block;
+    font-family: var(--font-serif-display);
+    font-style: italic;
+    font-stretch: extra-condensed;
+    font-weight: 700;
+    font-size: 1.8rem;
+    color: var(--color-taupe-dark);
+    margin-bottom: 0.75rem;
+  }
+
+  .step-card h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .step-card p {
+    margin: 0;
+  }
+
+  .widget-placeholder {
+    margin-top: 2.5rem;
+    padding: 3.5rem 2rem;
+    text-align: center;
+    background: var(--color-white);
+    border: 1px dashed rgba(43, 38, 33, 0.25);
+    border-radius: var(--radius);
+  }
+
+  .widget-placeholder-label {
+    display: inline-block;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-taupe-dark);
+    margin-bottom: 1rem;
+  }
+
+  .widget-placeholder p {
+    max-width: 46ch;
+    margin: 0 auto;
+  }
+
+  .deposit-note {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    color: var(--color-charcoal-soft);
+    font-style: italic;
+  }
+
+  .cta-fallback {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta-fallback-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+</style>
