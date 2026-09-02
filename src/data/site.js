@@ -392,6 +392,16 @@ export const portfolioItems = [
     link: 'https://mega.nz/file/tP1zzT7D#OE8tVUrn0a48uh9G-jcbluljgFb02W8DWXZrd6KYqzA',
     linkLabel: 'Ver en Mega',
   },
+  {
+    sector: 'video',
+    subsection: 'campaign',
+    title: 'Edición del making of de campaña para Rowenta. Proyecto realizado junto al equipo de CharHadas',
+    image: '/fotos/marca-redes/marca-56.jpg',
+    alt: 'Making of de campaña de vídeo para Rowenta, estilismo con fondo rosa, proyecto realizado junto al equipo de CharHadas',
+    video: true,
+    link: 'https://www.instagram.com/p/DYO_xfFMrIu/',
+    linkLabel: 'Ver en Instagram',
+  },
   // --- Vídeo / events ---
   {
     sector: 'video',
