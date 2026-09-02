@@ -375,9 +375,9 @@ export const portfolioItems = [
   {
     sector: 'video',
     subsection: 'campaign',
-    title: 'Making of de campaña de vídeo para Shiseido',
+    title: 'Edición de campaña de vídeo para Shiseido — junto a CharHadas',
     image: '/fotos/marca-redes/marca-04.jpg',
-    alt: 'Making of de campaña de vídeo para Shiseido',
+    alt: 'Edición de la campaña de vídeo para Shiseido, trabajo realizado junto al equipo de CharHadas',
     video: true,
     link: 'https://mega.nz/file/ZGVnBJpZ#YDY_jkIyEEJnVuLhsUgsK5rqnwp2nyCGMNju6Ste_jo',
     linkLabel: 'Ver en Mega',
