@@ -406,9 +406,9 @@ export const portfolioItems = [
   {
     sector: 'video',
     subsection: 'events',
-    title: 'Evento — Rowenta',
+    title: 'Evento — Rowenta. Grabación y edición junto al equipo de CharHadas',
     image: '/fotos/marca-redes/marca-42.jpg',
-    alt: 'Cobertura de evento de marca para Rowenta, animal care',
+    alt: 'Cobertura de evento de marca para Rowenta, animal care, grabación y edición junto al equipo de CharHadas',
     video: true,
     link: 'https://www.instagram.com/p/DYMv9_wMf67/',
     linkLabel: 'Ver en Instagram',
@@ -416,9 +416,9 @@ export const portfolioItems = [
   {
     sector: 'video',
     subsection: 'events',
-    title: 'Evento — Croft Twist',
+    title: 'Evento — Croft Twist. Grabación y edición junto al equipo de CharHadas',
     image: '/fotos/marca-redes/marca-44.jpg',
-    alt: 'Cobertura de evento de marca para Croft Twist',
+    alt: 'Cobertura de evento de marca para Croft Twist, grabación y edición junto al equipo de CharHadas',
     video: true,
     link: 'https://mega.nz/file/5DNUHKYR#w2GKs2tqLNhvOsETq5g_HAYj7BVZCw1sPIghEzL31tE',
     linkLabel: 'Ver en Mega',
