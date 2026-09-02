@@ -349,6 +349,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-30.jpg',
     alt: 'Rodaje de campaña de vídeo de moda infantil',
     video: true,
+    link: 'https://mega.nz/#P!AgHA-yfYrMg1rpu7h5jFzSC_HXCmYuA1yINWW7WNlg4P4c0gVw-eLlWhJp4LYqqb14L4lLf-jomfr1LYEF1IdG4bHmJSLs-oSZzkkoUcAEmlNm0nrxy0wQ6tHt40Q2fR9wYAjuEzCAg',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
@@ -377,6 +379,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-04.jpg',
     alt: 'Making of de campaña de vídeo para Shiseido',
     video: true,
+    link: 'https://mega.nz/file/ZGVnBJpZ#YDY_jkIyEEJnVuLhsUgsK5rqnwp2nyCGMNju6Ste_jo',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
@@ -385,6 +389,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-46.jpg',
     alt: 'Making of de campaña de vídeo para Elisabeth Arden',
     video: true,
+    link: 'https://mega.nz/file/tP1zzT7D#OE8tVUrn0a48uh9G-jcbluljgFb02W8DWXZrd6KYqzA',
+    linkLabel: 'Ver en Mega',
   },
   // --- Vídeo / events ---
   {
@@ -414,6 +420,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-44.jpg',
     alt: 'Cobertura de evento de marca para Croft Twist',
     video: true,
+    link: 'https://mega.nz/file/5DNUHKYR#w2GKs2tqLNhvOsETq5g_HAYj7BVZCw1sPIghEzL31tE',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
@@ -433,6 +441,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-39.jpg',
     alt: 'Rodaje de un tratamiento facial en una clínica estética',
     video: true,
+    link: 'https://mega.nz/file/paVxFS4Z#uGt5etJtuPpxpDCL6ISmG8k_D6NeE6JppQFFRhCd--c',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
@@ -441,6 +451,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-40.jpg',
     alt: 'Rodaje de un tratamiento en una clínica estética',
     video: true,
+    link: 'https://mega.nz/file/9LEERBDQ#RmiO9KujOvqaywIXeMzmDXNoslZRDXdVNCCPk-djqeQ',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
@@ -449,6 +461,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-41.jpg',
     alt: 'Miembro del equipo médico de una clínica estética',
     video: true,
+    link: 'https://mega.nz/file/YbUQxZTa#LTGl9-lGXI-p8fhFfvXf13sWHZG7IpMILEGmUEjO-Do',
+    linkLabel: 'Ver en Mega',
   },
   // --- Vídeo / real estate ---
   {
@@ -458,6 +472,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-36.jpg',
     alt: 'Rodaje de vídeo inmobiliario, entrada con paneles de madera y escalera',
     video: true,
+    link: 'https://mega.nz/file/1PUx2S7a#yZxyO7zBpjvjHr1Dax9TlY8ZMcarmfXk8gLsapwk8gg',
+    linkLabel: 'Ver en Mega',
   },
   {
     sector: 'video',
