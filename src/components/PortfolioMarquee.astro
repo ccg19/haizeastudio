@@ -62,7 +62,12 @@ const repeatedItems = Array.from({ length: repeatCount }, () => items).flat();
       {repeatedItems.map((item) => (
         <div class="pm-item" aria-hidden="true">
           {item.image ? (
-            item.video ? (
+            item.video && item.link ? (
+              <a class="pm-media" href={item.link} target="_blank" rel="noopener noreferrer" tabindex="-1">
+                <img src={item.image} alt="" loading="lazy" />
+                <span class="pm-play" aria-hidden="true">&#9658;</span>
+              </a>
+            ) : item.video ? (
               <div class="pm-media">
                 <img src={item.image} alt="" loading="lazy" />
                 <span class="pm-play" aria-hidden="true">&#9658;</span>
@@ -71,10 +76,10 @@ const repeatedItems = Array.from({ length: repeatCount }, () => items).flat();
               <img src={item.image} alt="" loading="lazy" />
             )
           ) : (
-            <span class="pm-video" tabindex="-1">
+            <a class="pm-video" href={item.link} target="_blank" rel="noopener noreferrer" tabindex="-1">
               <span class="pm-play" aria-hidden="true">&#9658;</span>
               <span class="pm-video-label">Vídeo</span>
-            </span>
+            </a>
           )}
           <span class="pm-caption">{item.title}</span>
         </div>
