@@ -356,7 +356,7 @@ export const portfolioItems = [
     sector: 'video',
     subsection: 'campaign',
     title: 'Vídeo de producto para Yamaha Music. Grabación y edición propias',
-    image: '/fotos/marca-redes/marca-54.jpg',
+    image: '/fotos/marca-redes/marca-55.jpg',
     alt: 'Batería en un vídeo de producto para Yamaha Music, grabación y edición propias',
     video: true,
     link: 'https://www.youtube.com/watch?v=UdBtaQSw5Ng',
