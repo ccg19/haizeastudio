@@ -18,6 +18,15 @@ interface Props {
 }
 
 const { items, reverse = false, portrait = false } = Astro.props;
+
+// Con pocos items, un único bucle es más estrecho que la pantalla y se ve
+// el "corte" del duplicado (misma imagen dos veces en la misma vista).
+// Repetimos el set base hasta cubrir con margen cualquier viewport ancho;
+// dentro del primer paso, solo la primera copia queda accesible para
+// lectores de pantalla, el resto se marca aria-hidden igual que el segundo paso.
+const MIN_ITEMS = 12;
+const repeatCount = items.length > 0 ? Math.max(1, Math.ceil(MIN_ITEMS / items.length)) : 1;
+const repeatedItems = Array.from({ length: repeatCount }, () => items).flat();
 ---
 
 {items.length === 0 ? (
@@ -25,8 +34,8 @@ const { items, reverse = false, portrait = false } = Astro.props;
 ) : (
   <div class:list={['marquee', 'portfolio-marquee', reverse && 'marquee-reverse', portrait && 'is-portrait']}>
     <div class="marquee-track">
-      {items.map((item) => (
-        <div class="pm-item">
+      {repeatedItems.map((item, i) => (
+        <div class="pm-item" aria-hidden={i >= items.length ? 'true' : undefined}>
           {item.image ? (
             item.video && item.link ? (
               <a class="pm-media" href={item.link} target="_blank" rel="noopener noreferrer">
@@ -50,7 +59,7 @@ const { items, reverse = false, portrait = false } = Astro.props;
           <span class="pm-caption">{item.title}</span>
         </div>
       ))}
-      {items.map((item) => (
+      {repeatedItems.map((item) => (
         <div class="pm-item" aria-hidden="true">
           {item.image ? (
             item.video ? (

@@ -384,6 +384,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-43.jpg',
     alt: 'Cobertura de evento de marca para Krups',
     video: true,
+    link: 'https://www.instagram.com/p/DZsAfKZoCGY/',
+    linkLabel: 'Ver en Instagram',
   },
   {
     sector: 'video',
@@ -392,7 +394,7 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-42.jpg',
     alt: 'Cobertura de evento de marca para Rowenta, animal care',
     video: true,
-    link: 'https://www.instagram.com/p/DZsAfKZoCGY/',
+    link: 'https://www.instagram.com/p/DYMv9_wMf67/',
     linkLabel: 'Ver en Instagram',
   },
   {
@@ -402,8 +404,6 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-44.jpg',
     alt: 'Cobertura de evento de marca para Croft Twist',
     video: true,
-    link: 'https://www.instagram.com/p/DYMv9_wMf67/',
-    linkLabel: 'Ver en Instagram',
   },
   {
     sector: 'video',
@@ -456,6 +456,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-37.jpg',
     alt: 'Rodaje de vídeo inmobiliario de una vivienda de lujo',
     video: true,
+    link: 'https://www.instagram.com/p/CtE3TLhAMKK/',
+    linkLabel: 'Ver en Instagram',
   },
   {
     sector: 'video',
@@ -464,6 +466,8 @@ export const portfolioItems = [
     image: '/fotos/marca-redes/marca-38.jpg',
     alt: 'Presentadora en un rodaje de vídeo inmobiliario',
     video: true,
+    link: 'https://www.instagram.com/p/Ct8sKhVg1d8/',
+    linkLabel: 'Ver en Instagram',
   },
   // --- Vídeo / social media ---
   {
