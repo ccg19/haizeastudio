@@ -396,9 +396,9 @@ export const portfolioItems = [
   {
     sector: 'video',
     subsection: 'events',
-    title: 'Evento — Krups',
+    title: 'Evento — Krups. Grabación y edición junto al equipo de CharHadas',
     image: '/fotos/marca-redes/marca-43.jpg',
-    alt: 'Cobertura de evento de marca para Krups',
+    alt: 'Cobertura de evento de marca para Krups, grabación y edición junto al equipo de CharHadas',
     video: true,
     link: 'https://www.instagram.com/p/DZsAfKZoCGY/',
     linkLabel: 'Ver en Instagram',
